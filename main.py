@@ -81,6 +81,12 @@ if user_prompt:
             messages=messages,
             stream=True  # for streaming the message
         )
-        response = st.write_stream(parse_groq_stream(stream))
+        response = parse_groq_stream(stream)
+        placeholder = st.empty()  # Create a placeholder for the slow effect
+        text = ""
+        for char in response:
+            text += char
+            placeholder.text(text)  # Update the placeholder text character by character
+            time.sleep(0.05)
     st.session_state.chat_history.append(
         {"role": "assistant", "content": response})
