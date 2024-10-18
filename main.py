@@ -52,7 +52,7 @@ st.caption("Let's go back in to future...")
 # display chat history
 for message in st.session_state.chat_history:
     # print("message in chat session")
-    with st.chat_message("role", avatar='🤖'):
+    with st.chat_message("role", avatar='.src/loki.png'):
         st.markdown(message["content"])
 
 
@@ -75,7 +75,7 @@ if user_prompt:
     ]
 
     # Display assistant response in chat message container
-    with st.chat_message("assistant", avatar='🤖'):
+    with st.chat_message("assistant", avatar='.src/loki.png'):
         stream = client.chat.completions.create(
             model="llama-3.1-8b-instant",
             messages=messages,
