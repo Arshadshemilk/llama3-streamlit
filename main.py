@@ -46,7 +46,7 @@ if "chat_history" not in st.session_state:
     ]
 
 # page title
-st.title("Hey Buddy!")
+st.title("Hi E-ling")
 st.caption("Let's go back in to future...")
 # the messages in chat_history will be stored as {"role":"user/assistant", "content":"msg}
 # display chat history
