@@ -14,7 +14,7 @@ def parse_groq_stream(stream):
 # streamlit page configuration
 st.set_page_config(
     page_title="Iron-llama",
-    page_icon="https://emojis.sh/emoji/loki-wxPdIYLS5l",
+    page_icon=".src/loki.png",
     layout="centered",
 )
 
