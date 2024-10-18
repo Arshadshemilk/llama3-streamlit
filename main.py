@@ -13,8 +13,8 @@ def parse_groq_stream(stream):
 
 # streamlit page configuration
 st.set_page_config(
-    page_title="The 70's Painter",
-    page_icon="🎨",
+    page_title="Iron-llama",
+    page_icon="https://emojis.sh/emoji/loki-wxPdIYLS5l",
     layout="centered",
 )
 
@@ -47,7 +47,7 @@ if "chat_history" not in st.session_state:
 
 # page title
 st.title("Hey Buddy!")
-st.caption("Let's go back in time...")
+st.caption("Let's go back in to future...")
 # the messages in chat_history will be stored as {"role":"user/assistant", "content":"msg}
 # display chat history
 for message in st.session_state.chat_history:
