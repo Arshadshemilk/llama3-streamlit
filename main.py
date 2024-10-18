@@ -10,6 +10,15 @@ def parse_groq_stream(stream):
             if chunk.choices[0].delta.content is not None:
                 yield chunk.choices[0].delta.content
 
+st.markdown("""
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;700&display=swap');
+
+    html, body, [class*="css"]  {
+        font-family: 'IBM Plex Sans', sans-serif;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
 # streamlit page configuration
 st.set_page_config(
