@@ -2,7 +2,6 @@ import os
 from dotenv import dotenv_values
 import streamlit as st
 from groq import Groq
-import time
 
 
 def parse_groq_stream(stream):
@@ -11,11 +10,7 @@ def parse_groq_stream(stream):
             if chunk.choices[0].delta.content is not None:
                 yield chunk.choices[0].delta.content
 
-def f_data(response):
-    for word in response.split(" "):
-        yield word + " "
-        time.sleep(0.02)
-        
+
 # streamlit page configuration
 st.set_page_config(
     page_title="Iron-llama",
@@ -86,7 +81,6 @@ if user_prompt:
             messages=messages,
             stream=True  # for streaming the message
         )
-        response = parse_groq_stream(stream)
-        st.write_stream(f_data(response))
+        response = st.write_stream(parse_groq_stream(stream))
     st.session_state.chat_history.append(
         {"role": "assistant", "content": response})
