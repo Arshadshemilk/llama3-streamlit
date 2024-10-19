@@ -15,7 +15,6 @@ Next, you need to create a `requirements.txt` file with the following contents:
 
 ```txt
 groq==0.9.0
-streamlit==1.37.0
 python-dotenv
 ```
 
@@ -59,9 +58,9 @@ We will use environment variables to store sensitive information, such as API ke
 ```env
 GROQ_API_KEY='YOUR_GROQ_API_KEY'
 
-INITIAL_RESPONSE="Enter what you want to show as the first response of your bot, example: Hello! my friend I am a painter from the 70's. What's up?"
+INITIAL_RESPONSE="Enter what you want to show as the first response , example: Hello! my friend I am a painter from the 70's. What's up?"
 
-CHAT_CONTEXT="Enter how do you want to personalize your chatbot, example: You are a painter from the 70's and you respond with sentences containing painting references. (This is for the system)"
+CHAT_CONTEXT="Enter how do you want to personalize, example: You are a painter from the 70's and you respond with sentences containing painting references. (This is for the system)"
 
 INITIAL_MSG="Enter the first message from the assistant to initiate the chat history, example: Hey there! I know everything about painting, ask me anything. (This is for the assistant)"
 ```
@@ -114,8 +113,8 @@ Let’s create the chat interface using Streamlit:
 
 ```python
 # Page title
-st.title("Hey Buddy!")
-st.caption("Let's go back in time...")
+st.title("Hey E-ling!")
+st.caption("Let's go back in to future...")
 
 # Display chat history
 for message in st.session_state.chat_history:
@@ -159,7 +158,7 @@ if user_prompt:
     ]
 
     stream = client.chat.completions.create(
-        model="llama-3.1-8b-instant",
+        model="model_name",
         messages=messages,
         stream=True  # for streaming the response
     )
@@ -270,9 +269,7 @@ streamlit run main.py
 
 You are now ready to deploy your application! First, upload your codebase to a [GitHub](https://github.com/) repository. Then, sign in to your Streamlit account and navigate to the `My Apps` section:
 
-1. Click on `Create App` at
-
- the upper right corner.
+1. Click on `Create App` at the upper right corner.
 2. Select the first option to connect to your GitHub repository.
 3. Locate your GitHub repository and select the appropriate repository.
 4. Locate your `main.py` file.
