@@ -15,7 +15,7 @@ def parse_groq_stream(stream):
 st.set_page_config(
     page_title="Iron-llama",
     page_icon=".src/loki.png",
-    layout="centered",
+    layout="wide",
 )
 
 
