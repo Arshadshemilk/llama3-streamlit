@@ -71,10 +71,10 @@ for message in st.session_state.chat_history:
 # user input field
 user_prompt = st.chat_input("Ask me")
 model = ModelSelector()
+selected_model = model.select()
 
 if user_prompt:
     # st.chat_message("user").markdown
-    selected_model = model.select()
     with st.chat_message("user", avatar="🗨️"):
         st.markdown(user_prompt)
     st.session_state.chat_history.append(
