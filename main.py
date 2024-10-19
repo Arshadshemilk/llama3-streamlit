@@ -18,6 +18,18 @@ st.set_page_config(
     layout="wide",
 )
 
+class ModelSelector:
+    """Allows the user to select a model from a predefined list."""
+    def __init__(self):
+        # List of available models to choose from
+        self.models = ["llama3-70b-8192","llama3-8b-8192","mixtral-8x7b-32768","gemma-7b-it"]
+
+# Display model selection in a sidebar with a title
+    def select(self):
+        with st.sidebar:
+            st.sidebar.title("Chat with Llama3 + α")
+            return st.selectbox("Select a model:", self.models)
+
 
 try:
     secrets = dotenv_values(".env")  # for dev env
@@ -58,9 +70,11 @@ for message in st.session_state.chat_history:
 
 # user input field
 user_prompt = st.chat_input("Ask me")
+model = ModelSelector()
 
 if user_prompt:
     # st.chat_message("user").markdown
+    selected_model = model.select()
     with st.chat_message("user", avatar="🗨️"):
         st.markdown(user_prompt)
     st.session_state.chat_history.append(
@@ -77,9 +91,12 @@ if user_prompt:
     # Display assistant response in chat message container
     with st.chat_message("assistant", avatar='.src/loki.png'):
         stream = client.chat.completions.create(
-            model="llama-3.1-8b-instant",
+            model=selected_model,
             messages=messages,
-            stream=True  # for streaming the message
+            temperature=0,
+            max_tokens=4096,
+            stream=True,
+            stop=None,
         )
         response = st.write_stream(parse_groq_stream(stream))
     st.session_state.chat_history.append(
